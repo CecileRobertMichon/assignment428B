@@ -1,8 +1,13 @@
 package com.example.cecilerobertm.amp.model;
 
-/**
- * Created by michael on 17/02/16.
- */
 public class NonStandardEnvelope extends Envelope {
+
+    public NonStandardEnvelope(float length, float width, float weight) {
+        super(length, width, weight);
+    }
     
+    public NonStandardEnvelope(int length, int width, int weight) {
+        super(length, width, weight);
+    }
+
 }

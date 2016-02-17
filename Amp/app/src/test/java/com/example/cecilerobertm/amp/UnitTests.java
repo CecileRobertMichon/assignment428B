@@ -2,11 +2,8 @@ package com.example.cecilerobertm.amp;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.Assert.assertEquals;
 
-/**
- * Created by cecilerobertm on 16-02-15.
- */
 public class UnitTests {
     @Test
     public void no_args() throws Exception {

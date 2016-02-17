@@ -89,7 +89,7 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/black"
-        android:layout_below="@id/switch_standard"/>
+    />
 
     <Switch
         android:layout_width="wrap_content"
