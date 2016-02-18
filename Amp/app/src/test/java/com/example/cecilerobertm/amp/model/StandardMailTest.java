@@ -1,6 +1,5 @@
-package com.example.cecilerobertm.amp;
+package com.example.cecilerobertm.amp.model;
 
-import com.example.cecilerobertm.amp.model.StandardLettermail;
 import org.junit.Test;
 
 import java.util.Random;
@@ -16,7 +15,7 @@ import java.util.Random;
  */
 public class StandardMailTest {
 
-    public float getRandomInRange(float minimum, float maximum) {
+    private float getRandomInRange(float minimum, float maximum) {
         Random rand = new Random();
         return rand.nextFloat() * (maximum - minimum) + minimum;
     }
@@ -33,9 +32,6 @@ public class StandardMailTest {
         StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
 
         assert standardLettermail instanceof StandardLettermail;
-        assert standardLettermail.getLength() >= 140 && standardLettermail.getLength() <= 245;
-        assert standardLettermail.getWidth() >= 90 && standardLettermail.getWidth() <= 156;
-        assert standardLettermail.getWeight() >= 3.0 && standardLettermail.getWeight() <= 50.0;
     }
 
     /**
@@ -46,8 +42,7 @@ public class StandardMailTest {
         float length = getRandomInRange(0, 139.9f);
         float width = getRandomInRange(0, 89.9f);
         float weight = getRandomInRange(0, 2.9f);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -55,8 +50,7 @@ public class StandardMailTest {
         float length = getRandomInRange(245, 1000);
         float width = getRandomInRange(90, 1000);
         float weight = getRandomInRange(50, 1000);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     /**
@@ -67,8 +61,7 @@ public class StandardMailTest {
         float length = getRandomInRange(0, 139.9f);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(3, 50);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -76,8 +69,7 @@ public class StandardMailTest {
         float length = getRandomInRange(245, 1000);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(3, 50);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     /**
@@ -88,8 +80,7 @@ public class StandardMailTest {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(0, 89.9f);
         float weight = getRandomInRange(3, 50);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -97,8 +88,7 @@ public class StandardMailTest {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(156, 1000);
         float weight = getRandomInRange(3, 50);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     /**
@@ -109,8 +99,7 @@ public class StandardMailTest {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(0, 3);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -118,8 +107,7 @@ public class StandardMailTest {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(50, 1000);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        new StandardLettermail(length, width, weight);
     }
 
     /**

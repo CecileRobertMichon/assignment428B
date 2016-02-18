@@ -1,7 +1,5 @@
-package com.example.cecilerobertm.amp;
+package com.example.cecilerobertm.amp.model;
 
-import com.example.cecilerobertm.amp.model.NonStandardEnvelope;
-import com.example.cecilerobertm.amp.model.StandardLettermail;
 import org.junit.Test;
 
 import java.util.Random;
@@ -16,7 +14,7 @@ import java.util.Random;
  */
 public class NonStandardMailTest {
 
-    public float getRandomInRange(float minimum, float maximum) {
+    private float getRandomInRange(float minimum, float maximum) {
         Random rand = new Random();
         return rand.nextFloat() * (maximum - minimum) + minimum;
     }
@@ -47,7 +45,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(-1, 0);
         float weight = getRandomInRange(-1, 0);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -56,7 +54,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(270, 1000);
         float weight = getRandomInRange(500, 1000);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     /**
@@ -68,7 +66,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(0, 270);
         float weight = getRandomInRange(0, 500);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -77,7 +75,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(0, 270);
         float weight = getRandomInRange(0, 500);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     /**
@@ -89,7 +87,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(-1, 0);
         float weight = getRandomInRange(0, 500);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -98,7 +96,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(270, 1000);
         float weight = getRandomInRange(0, 500);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     /**
@@ -110,7 +108,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(0, 270);
         float weight = getRandomInRange(-1, 0);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -119,7 +117,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(0, 270);
         float weight = getRandomInRange(500, 1000);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
+        new NonStandardEnvelope(length, width, weight);
     }
 
     /**
@@ -131,8 +129,7 @@ public class NonStandardMailTest {
         float width = getRandomInRange(0, 270);
         float weight = getRandomInRange(0, 100);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
-        assert nonStandardEnvelope.getCost() == 0.98f;
+        assert new NonStandardEnvelope(length, width, weight).getCost() == 0.98f;
     }
 
     @Test
@@ -141,7 +138,6 @@ public class NonStandardMailTest {
         float width = getRandomInRange(0, 270);
         float weight = getRandomInRange(100.01f, 500);
 
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
-        assert nonStandardEnvelope.getCost() == 2.40f;
+        assert new NonStandardEnvelope(length, width, weight).getCost() == 2.40f;
     }
 }
