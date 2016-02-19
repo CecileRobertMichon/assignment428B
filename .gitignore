@@ -2,3 +2,9 @@
 *.iml
 .idea
 Amp/.idea
+
+*.gradle
+
+*.gradle
+
+Amp/app/build.gradle
