@@ -20,7 +20,7 @@ public class NonStandardMailTest {
     }
 
     /**
-     * Test1 - Test that all the parameters are in the proper ranges without error
+     * Test that all the parameters are in the proper ranges without error
      */
     @Test
     public void TestInRange() {
@@ -31,30 +31,34 @@ public class NonStandardMailTest {
         NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(length, width, weight);
 
         assert nonStandardEnvelope instanceof NonStandardEnvelope;
-    }
-
-    /**
-     * Test2 - Test that length, width and weight can be retrieved and set on the letter
-     */
-    @Test
-    public void TestGettersAndSetters() {
-
-        NonStandardEnvelope nonStandardEnvelope = new NonStandardEnvelope(150, 140, 20);
-
-        float length = 200, width = 150, weight = 40;
 
         nonStandardEnvelope.setLength(length);
-        assert nonStandardEnvelope.getLength() == length;
-
         nonStandardEnvelope.setWidth(width);
-        assert nonStandardEnvelope.getWidth() == width;
-
         nonStandardEnvelope.setWeight(weight);
+
+        assert nonStandardEnvelope.getLength() == length;
+        assert nonStandardEnvelope.getWidth() == width;
         assert nonStandardEnvelope.getWeight() == weight;
     }
 
     /**
-     * Test3 - Test that when all the parameters are outside the proper ranges
+     * Test weight is outside of valid range
+     * there should be an IllegalArgumentException
+     */
+    @Test
+    public void TestGetCost() {
+        float length = getRandomInRange(0, 380);
+        float width = getRandomInRange(0, 270);
+        float weight = getRandomInRange(0, 100);
+
+        assert new NonStandardEnvelope(length, width, weight).getCost() == 0.98;
+
+        weight = getRandomInRange(100.01f, 500);
+        assert new NonStandardEnvelope(length, width, weight).getCost() == 2.40;
+    }
+
+    /**
+     * Test that when all the parameters are outside the proper ranges
      * there should be an IllegalArgumentException.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -73,7 +77,7 @@ public class NonStandardMailTest {
     }
 
     /**
-     * Test4 - Test that when all the parameters are above the proper ranges
+     * Test that when all the parameters are above the proper ranges
      * there should be an IllegalArgumentException.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -89,7 +93,7 @@ public class NonStandardMailTest {
     }
 
     /**
-     * Test5 - Test length is outside of valid range
+     * Test length is outside of valid range
      * there should be an IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
@@ -105,7 +109,7 @@ public class NonStandardMailTest {
     }
 
     /**
-     * Test6 - Test width is outside of valid range
+     * Test width is outside of valid range
      * there should be an IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
@@ -118,22 +122,6 @@ public class NonStandardMailTest {
 
         weight = getRandomInRange(500, 1000);
         new NonStandardEnvelope(length, width, weight);
-    }
-
-    /**
-     * Test7 - Test weight is outside of valid range
-     * there should be an IllegalArgumentException
-     */
-    @Test
-    public void TestGetCost() {
-        float length = getRandomInRange(0, 380);
-        float width = getRandomInRange(0, 270);
-        float weight = getRandomInRange(0, 100);
-
-        assert new NonStandardEnvelope(length, width, weight).getCost() == 0.98f;
-
-        weight = getRandomInRange(100.01f, 500);
-        assert new NonStandardEnvelope(length, width, weight).getCost() == 2.40f;
     }
 
 }

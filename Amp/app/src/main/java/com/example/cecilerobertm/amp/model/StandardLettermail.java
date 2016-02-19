@@ -1,14 +1,14 @@
 package com.example.cecilerobertm.amp.model;
 
-public class StandardLettermail extends Envelope {
+public class StandardLettermail {
+
+    private double length, width, weight;
 
     public StandardLettermail(double length, double width, double weight) {
-        super(length, width, weight);
-        validateInputs(length, width, weight);
-    }
+        this.length = length;
+        this.width = width;
+        this.weight = weight;
 
-    public StandardLettermail(int length, int width, int weight) {
-        super(length, width, weight);
         validateInputs(length, width, weight);
     }
 
@@ -28,14 +28,37 @@ public class StandardLettermail extends Envelope {
 
         if (!validWeight)
             throw new IllegalArgumentException("Weight is outside of valid range");
+
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public float getCost() {
         if (0 <= this.getWeight() && this.getWeight() <= 30)
             return 0.49f;
-        else if (30 < this.getWeight() && this.getWeight() <= 50)
-            return 0.80f;
         else
-            throw new IllegalArgumentException("Cost cannot be computed for the current range");
+            return 0.80f;
     }
 }
