@@ -1,35 +1,35 @@
 package com.example.cecilerobertm.amp.model;
 
 public abstract class Envelope {
-    private float length;
-    private float width;
-    private float weight;
+    private double length;
+    private double width;
+    private double weight;
 
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public float getLength() {
+    public double getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(double length) {
         this.length = length;
     }
 
-    public float getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
-    public Envelope(float length, float width, float weight) {
+    public Envelope(double length, double width, double weight) {
         this.length = length;
         this.width = width;
         this.weight = weight;

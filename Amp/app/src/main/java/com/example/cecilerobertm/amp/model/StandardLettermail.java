@@ -2,19 +2,17 @@ package com.example.cecilerobertm.amp.model;
 
 public class StandardLettermail extends Envelope {
 
-    public StandardLettermail(float length, float width, float weight) {
+    public StandardLettermail(double length, double width, double weight) {
         super(length, width, weight);
-
         validateInputs(length, width, weight);
     }
 
     public StandardLettermail(int length, int width, int weight) {
         super(length, width, weight);
-
         validateInputs(length, width, weight);
     }
 
-    public void validateInputs(float length, float width, float weight) throws IllegalArgumentException {
+    public void validateInputs(double length, double width, double weight) throws IllegalArgumentException {
         boolean validLength = 140 <= length && length <= 245;
         boolean validWidth = 90 <= width && width <= 156;
         boolean validWeight = 3.0f <= weight && weight <= 50.0f;

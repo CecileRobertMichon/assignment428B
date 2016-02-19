@@ -8,12 +8,6 @@ public class NonStandardEnvelope extends Envelope {
         validateInputs(length, width, weight);
     }
 
-    public NonStandardEnvelope(int length, int width, int weight) {
-        super(length, width, weight);
-
-        validateInputs(length, width, weight);
-    }
-
     public void validateInputs(float length, float width, float weight) throws IllegalArgumentException {
         boolean validLength = 0 <= length && length <= 380;
         boolean validWidth = 0 <= width && width <= 270;
@@ -30,6 +24,7 @@ public class NonStandardEnvelope extends Envelope {
 
         if (!validWeight)
             throw new IllegalArgumentException("Weight is outside of valid range");
+
     }
 
     public float getCost() {
@@ -40,4 +35,5 @@ public class NonStandardEnvelope extends Envelope {
         else
             throw new IllegalArgumentException("Cost cannot be computed for the current range");
     }
+
 }

@@ -30,12 +30,32 @@ public class StandardMailTest {
         float weight = getRandomInRange(3, 50);
 
         StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
-
         assert standardLettermail instanceof StandardLettermail;
     }
 
     /**
-     * Test2 - Test that all the parameters are outside the proper ranges
+     * Test2 - Test that length, width and weight can be retrieved and set on the letter
+     */
+    @Test
+    public void TestGettersAndSetters() {
+
+        StandardLettermail standardLettermail = new StandardLettermail(150, 140, 20);
+
+        float length = 200, width = 150, weight = 40;
+
+        standardLettermail.setLength(length);
+        assert standardLettermail.getLength() == length;
+
+        standardLettermail.setWidth(width);
+        assert standardLettermail.getWidth() == width;
+
+        standardLettermail.setWeight(weight);
+        assert standardLettermail.getWeight() == weight;
+    }
+
+    /**
+     * Test3 - Test that when all the parameters are outside the proper ranges
+     * there should be an IllegalArgumentException.
      */
     @Test(expected = IllegalArgumentException.class)
     public void TestAllBelowRange() {
@@ -45,6 +65,10 @@ public class StandardMailTest {
         new StandardLettermail(length, width, weight);
     }
 
+    /**
+     * Test4 - Test that when all the parameters are above the proper ranges
+     * there should be an IllegalArgumentException.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void TestAllAboveRange() {
         float length = getRandomInRange(245, 1000);
@@ -54,82 +78,64 @@ public class StandardMailTest {
     }
 
     /**
-     * Test3 - Test length is outside of valid range
+     * Test5 - Test length is outside of valid range
+     * there should be an IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
-    public void TestLengthBelowRange() {
+    public void TestLengthOutsideOfRange() {
         float length = getRandomInRange(0, 139.9f);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(3, 50);
         new StandardLettermail(length, width, weight);
-    }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void TestLengthAboveRange() {
-        float length = getRandomInRange(245, 1000);
-        float width = getRandomInRange(90, 156);
-        float weight = getRandomInRange(3, 50);
+        length = getRandomInRange(245, 1000);
         new StandardLettermail(length, width, weight);
     }
 
     /**
-     * Test4 - Test width is outside of valid range
+     * Test6 - Test width is outside of valid range
+     * there should be an IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
-    public void TestWidthBelowRange() {
+    public void TestWidthOutsideRange() {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(0, 89.9f);
         float weight = getRandomInRange(3, 50);
         new StandardLettermail(length, width, weight);
-    }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void TestWidthAboveRange() {
-        float length = getRandomInRange(140, 245);
-        float width = getRandomInRange(156, 1000);
-        float weight = getRandomInRange(3, 50);
+        width = getRandomInRange(156, 1000);
         new StandardLettermail(length, width, weight);
     }
 
     /**
-     * Test5 - Test weight is outside of valid range
+     * Test7 - Test weight is outside of valid range
+     * there should be an IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
-    public void TestWeightBelowRange() {
+    public void TestWeightOutsideRange() {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(0, 3);
         new StandardLettermail(length, width, weight);
-    }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void TestWeightAboveRange() {
-        float length = getRandomInRange(140, 245);
-        float width = getRandomInRange(90, 156);
-        float weight = getRandomInRange(50, 1000);
+        weight = getRandomInRange(50, 1000);
         new StandardLettermail(length, width, weight);
     }
 
     /**
-     * Test6 - Test cost is either of two values based on two weight ranges
+     * Test8 - Test cost is either of two values based on two weight ranges
      */
     @Test
-    public void TestCostInBottomRange() {
+    public void TestGetCost() {
         float length = getRandomInRange(140, 245);
         float width = getRandomInRange(90, 156);
         float weight = getRandomInRange(3, 30);
 
         StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
         assert standardLettermail.getCost() == 0.49f;
-    }
 
-    @Test
-    public void TestCostInTopRange() {
-        float length = getRandomInRange(140, 245);
-        float width = getRandomInRange(90, 156);
-        float weight = getRandomInRange(30, 50);
-
-        StandardLettermail standardLettermail = new StandardLettermail(length, width, weight);
+        weight = getRandomInRange(30, 50);
+        standardLettermail.setWeight(weight);
         assert standardLettermail.getCost() == 0.80f;
     }
 }
